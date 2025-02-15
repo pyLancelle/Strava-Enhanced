@@ -1,0 +1,3 @@
+etl:
+  nb_days_to_retrieve: 20 # So at every run, we load the last 20 days of activity
+
