@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace   # Supprime les espaces inutiles en fin de ligne
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Run Pytest before commit
+        entry: uv run pytest test
+        language: system
+        pass_filenames: false
+        always_run: true

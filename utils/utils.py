@@ -25,4 +25,4 @@ def days_to_timestamp(chosen_date: str, nb_days: int) -> int:
         tzinfo=ZoneInfo("Europe/Paris")
     )
 
-    return int(date_minuit.timestamp())+100
+    return int(date_minuit.timestamp())
