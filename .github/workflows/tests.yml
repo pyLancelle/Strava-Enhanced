@@ -25,7 +25,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH  # Ajoute uv au PATH
 
       - name: Install dependencies with uv
-        run: uv venv .venv && uv pip install -r uv.lock
+        run: uv pip sync
 
       - name: Run Pytest
         run: uv pip run pytest --maxfail=1 --disable-warnings -v  # Exécute Pytest dans l'env UV
