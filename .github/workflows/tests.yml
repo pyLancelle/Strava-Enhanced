@@ -1,0 +1,31 @@
+name: Run Tests
+
+on:
+  push:
+    branches: [main, dev]  # Exécute les tests sur push vers main ou dev
+  pull_request:
+    branches: [main, dev]  # Exécute les tests sur chaque PR vers main ou dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Récupère ton code source
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"  # Mets à jour si besoin
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Ajoute uv au PATH
+
+      - name: Install dependencies with uv
+        run: uv venv .venv && uv pip install -r uv.lock
+
+      - name: Run Pytest
+        run: uv pip run pytest --maxfail=1 --disable-warnings -v  # Exécute Pytest dans l'env UV
