@@ -24,8 +24,11 @@ jobs:
           curl -LsSf https://astral.sh/uv/install.sh | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH  # Ajoute uv au PATH
 
+      - name: Create virtual environment
+        run: uv venv .venv
+
       - name: Install dependencies with uv
-        run: uv pip sync uv.lock
+        run: uv pip install  # Installe les dépendances depuis `pyproject.toml` et `uv.lock`
 
       - name: Run Pytest
         run: uv pip run pytest --maxfail=1 --disable-warnings -v  # Exécute Pytest dans l'env UV
