@@ -21,7 +21,7 @@ def main():
 
 
     # Insert into Bronze
-    athlete = strava.get_athlete_data()
+    athlete = strava.get_recent_activities()
     #
     print(athlete)
 

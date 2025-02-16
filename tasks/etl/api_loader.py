@@ -7,6 +7,11 @@ class API_Loader:
         self.client_id = client_id
         self.refresh_token = refresh_token
 
+    def run(self):
+        self.refresh_access_token()
+
+        pass
+
     def _get_headers(self):
         """
 
@@ -79,4 +84,6 @@ class API_Loader:
         else:
             print("Erreur lors de la récupération des activités :", response.status_code, response.text)
             return None
+
+
 
